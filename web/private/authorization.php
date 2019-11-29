@@ -18,12 +18,8 @@ function login() {
         }
         else {
             //Get user fields from database associated with entered login
-            $stmt = $db->prepare('SELECT * FROM users WHERE login = ?');
-            $stmt->bind_param('s', $login);
+            $users = $db->query("SELECT * FROM users WHERE login=$login");
 
-            $stmt->execute();
-
-            $users = $stmt->get_result();
             //Checking if user with that login exists
             if ($users->field_count == 1) {
                 $user = $users->fetch_assoc();
@@ -64,12 +60,7 @@ function register() {
         }
         else {
             //Get user fields from database associated with entered login
-            $stmt = $db->prepare('SELECT * FROM users WHERE login = ?');
-            $stmt->bind_param('s', $login);
-
-            $stmt->execute();
-
-            $users = $stmt->get_result();
+            $users = $db->query("SELECT * FROM users WHERE login=$login");
 
             //Checking if user with that login exists
             if ($users->field_count == 1) {
@@ -83,18 +74,10 @@ function register() {
 
                 $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-                $stmt = $db->prepare('INSERT INTO users (login, password, email) VALUES (?, ?, ?);');
-                $stmt->bind_param('sss', $login, $password, $email);
-
-                $stmt->execute();
+                $db->query("INSERT INTO users (login, password, email) VALUES ($login, $email, $password);");
 
                 //Getting new user id
-                $stmt = $db->prepare('SELECT * FROM users WHERE login = ?');
-                $stmt->bind_param('s', $login);
-
-                $stmt->execute();
-
-                $users = $stmt->get_result();
+                $users = $db->query("SELECT * FROM users WHERE login=$login");
                 $user = $users->fetch_assoc();
 
                 session_start();

@@ -1,3 +1,5 @@
+{include file="svg-sprites.tmpl.html"}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,6 +14,65 @@
     </head>
 
     <body>
-        Hello, {$greeting}!
+        {call name=svg_sprites}
+
+        <div class="page">
+            <div class="header center">
+                <svg class="logo"><use xlink:href="#svg-logo"></use></svg>
+                <span class="title">Hack-a-ton</span>
+            </div>
+            <div class="content center">
+                <div class="side left">
+                    IT, интернет, телеком
+                    <br>
+                    Бытовые услуги
+                    <br>
+                    Деловые услуги
+                    <br>
+                    Искусство
+                    <br>
+                    Красота, здоровье
+                    <br>
+                    Курьерские поручения
+                    <br>
+                    Мастер на час
+                    <br>
+                    Няни, сиделки
+                    <br>
+                    Оборудование, производство
+                    <br>
+                    Обучение, курсы
+                    <br>
+                    Охрана, безопасность
+                    <br>
+                    Питание, кейтеринг
+                    <br>
+                    Праздники, мероприятия
+                    <br>
+                    Реклама, полиграфия
+                    <br>
+                    Ремонт и обслуживание техники
+                    <br>
+                    Ремонт, строительство
+                    <br>
+                    Сад, благоустройство
+                    <br>
+                    Транспорт, перевозки
+                    <br>
+                    Уборка
+                    <br>
+                    Установка техники
+                    <br>
+                    Уход за животными
+                    <br>
+                    Фото- и видеосъёмка
+                    <br>
+                    Другое
+                </div>
+                <div class="side right box">
+                    .
+                </div>
+            </div>
+        </div>
     </body>
 </html>

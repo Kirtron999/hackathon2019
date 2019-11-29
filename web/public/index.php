@@ -18,10 +18,8 @@ $smarty->setCompileDir("../private/templates_c");
 $smarty->assign("greeting", "world");
 $smarty->display("index.tmpl.html");
 
-
-
 # Update database
-require_once "../private/database_update.php";
-database_update();
+# require_once "../private/database_update.php";
+# database_update();
 
 ?>

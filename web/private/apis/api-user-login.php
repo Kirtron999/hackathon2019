@@ -10,7 +10,7 @@ if (strlen($username) == 0) {
     error_response("Username is required");
 }
 
-if (strlen($username) == 0) {
+if (strlen($password) == 0) {
     error_response("Password is required");
 }
 

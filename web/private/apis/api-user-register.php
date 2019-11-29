@@ -3,49 +3,50 @@
 require_once "../private/libs/api-util.php";
 require_once "../private/configs/mysql.config.php";
 
-function register() {
+$username = http_post_param("username") ?? "";
+$email = http_post_param("email") ?? "";
+$password = http_post_param("password")  ?? "";
 
-    //!!!CHANGE WHEN THE DATABASE IS READY!!!
-    if ($_POST['login'] != "" && $_POST['email'] != "" && $_POST['password'] != "") {
+if (strlen($username) == 0) {
+    error_response("Username is required");
+}
 
-        //Connect to database
-        $db = new mysqli(db_host, db_username, db_password, db_name, db_port);
+if (strlen($email) == 0) {
+    error_response("E-mail is required");
+}
 
-        //Checking for connection errors
-        if ($db->connect_error) {
-            return array('db-connection-error' => "Unable to connect database: $db->error");
-        }
-        else {
-            //Get user fields from database associated with entered login
-            $users = $db->query("SELECT * FROM users WHERE login=$login");
+if (strlen($password) == 0) {
+    error_response("Password is required");
+}
 
-            //Checking if user with that login exists
-            if ($users->field_count == 1) {
-                return array('user-exist-error' => "");
-            }
-            else {
-                //Initializing new user
-                //!!!CHANGE WHEN THE DATABASE IS READY!!!
-                $login = $_POST['login'];
-                $email = $_POST['email'];
+$db = new mysqli(db_host, db_username, db_password, db_name, db_port);
+if ($db->connect_error) {
+    error_response("Server error");
+}
 
-                $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+$stmt = $db->prepare("SELECT * FROM users WHERE username = ? LIMIT 1");
+$stmt->bind_param("s", $username);
+$stmt->execute();
 
-                $db->query("INSERT INTO users (login, password, email) VALUES ($login, $email, $password);");
+if ($users->num_rows == 1) {
+    error_response("User already exist");
+}
+else {
+    $password = password_hash($password, PASSWORD_BCRYPT);
 
-                //Getting new user id
-                $users = $db->query("SELECT * FROM users WHERE login=$login");
-                $user = $users->fetch_assoc();
+    $stmt = $db->prepare('INSERT INTO users (login, password, email) VALUES (?, ?, ?);');
+    $stmt->bind_param('sss', $username, $password, $email);
+    $stmt->execute();
 
-                session_start();
-                $_SESSION['id'] = $user['id'];
+    $stmt = $db->prepare("SELECT * FROM users WHERE username = ? LIMIT 1");
+    $stmt->bind_param('s', $username);
+    $stmt->execute();
 
-            }
-        }
-    }
-    else {
-        return array('null-fields-error' => "Fields cannot be empty");
-    }
+    $users = $stmt->get_result();
+    $user = $users->fetch_assoc();
+
+    session_start();
+    $_SESSION['id'] = $user['id'];
 }
 
 ?>

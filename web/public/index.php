@@ -7,7 +7,6 @@ ini_set("error_log", __DIR__ . "./php-errors.log");
 ini_set("log_errors_max_len", 0);
 ini_set("display_startup_errors", 1);
 ini_set("display_errors", 1);
-declare(strict_types=1);
 
 # Require Smarty template engine
 require_once "../private/deps/smarty-3.1.13/Smarty.class.php";

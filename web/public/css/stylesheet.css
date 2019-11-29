@@ -63,7 +63,32 @@ body {
 
 .side.left {
     width: 25%;
+}
+
+.category {
+    user-select: none;
     font-size: 14px;
+    padding-bottom: 2px;
+}
+
+.category a {
+    display: inline-block;
+    text-decoration: none;
+    color: #0091d9;
+}
+
+.category a:hover {
+    color: #ff6163;
+}
+
+.category span:empty:after {
+    content: "0";
+}
+
+.category span {
+    padding-left: 4px;
+    font-size: 13px;
+    color: grey;
 }
 
 .side.right {

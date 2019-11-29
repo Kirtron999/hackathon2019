@@ -1,7 +1,7 @@
 <?php
 
 require_once "../private/libs/api-util.php";
-require_once "configs/mysql.config.php";
+require_once "../private/configs/mysql.config.php";
 
 function login() {
 

@@ -16,5 +16,13 @@ function http_get_param(string $key): string? {
     return null;
 }
 
+function http_post_param(string $key): string? {
+    if (isset($_POST[$key]) && is_string($_POST[$key])) {
+        return $_POST[$key];
+    }
+
+    return null;
+}
+
 
 ?>

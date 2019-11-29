@@ -1,16 +1,11 @@
 <?php
-    if (isset($_POST['login'])) { $login = $_POST['login']; if ($login == '') { unset($login);} } 
-    if (isset($_POST['password'])) { $password=$_POST['password']; if ($password =='') { unset($password);} }
+    if (isset(http_post_param['login'])) { $login = $_POST['login']; if ($login == '')} 
+    if (isset(http_post_param['password'])) { $password=$_POST['password']; if ($password =='')}
     
  if (empty($login) or empty($password)) 
     {
     echo ("Заполнены не все поля!");
     }
-    
-    $login = stripslashes($login);
-    $login = htmlspecialchars($login);
- $password = stripslashes($password);
-    $password = htmlspecialchars($password);
 
     $login = trim($login);
     $password = trim($password);

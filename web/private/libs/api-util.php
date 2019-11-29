@@ -8,7 +8,7 @@ function json_api_response(array $data): void {
     exit;
 }
 
-function http_get_param(string $key): string? {
+function http_get_param(string $key): ?string {
     if (isset($_GET[$key]) && is_string($_GET[$key])) {
         return $_GET[$key];
     }
@@ -16,7 +16,7 @@ function http_get_param(string $key): string? {
     return null;
 }
 
-function http_post_param(string $key): string? {
+function http_post_param(string $key): ?string {
     if (isset($_POST[$key]) && is_string($_POST[$key])) {
         return $_POST[$key];
     }

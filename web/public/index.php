@@ -1,5 +1,9 @@
 <?php
 
+include 'C:\Server\www\hackaton\web\private\database_update.php';
+
+update_database('localhost', 3306, 'root', '', 'mysql');
+
 # Show all errors, log errors to ./php-errors.log
 error_reporting(E_ALL);
 ini_set("log_errors", 1);

@@ -3,14 +3,14 @@
 require_once "../private/libs/api-util.php";
 require_once "../private/configs/mysql.config.php";
 
-$username = http_post_param("username");
-$password = http_post_param("password");
+$username = http_post_param("username") ?? "";
+$password = http_post_param("password") ?? "";
 
-if (empty($username)) {
+if (strlen($username) == 0) {
     error_response("Username is required");
 }
 
-if (empty($password)) {
+if (strlen($username) == 0) {
     error_response("Password is required");
 }
 
@@ -19,26 +19,20 @@ if ($db->connect_error) {
     error_response("Server error");
 }
 
-$stmt = $db->prepare("SELECT * FROM users WHERE username = ?");
+$stmt = $db->prepare("SELECT * FROM users WHERE username = ? LIMIT 1");
 $stmt->bind_param("s", $username);
-
 $stmt->execute();
 
-$users = $stmt->get_result();
+$result = $stmt->get_result();
 
-if ($users->field_count == 1) {
-    $user = $users->fetch_assoc();
+if ($result->num_rows == 1) {
+    $user = $result->fetch_assoc();
+    $hash = $user["password"];
 
-    if (password_hash($password, PASSWORD_BCRYPT) == $user['password']) {
-        session_start();
-        $_SESSION['id'] = $user['id'];
-    }
-    else {
-        error_response("Wrong password");
+    if (password_verify($password, $hash)) {
+        $_SESSION["id"] = $user["id"];
+        success_response("Successfully logged in!");
     }
 }
-else {
-    error_response("User doesn't exist");
-}
 
-$hash = password_hash($password, PASSWORD_BCRYPT);
+error_response("Wrong password");

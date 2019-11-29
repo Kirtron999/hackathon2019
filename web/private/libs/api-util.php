@@ -8,7 +8,14 @@ function api_response(array $data): void {
     exit;
 }
 
-function api_error_response(string $message): void {
+function error_response(string $message): void {
+    api_response([
+        "success" => false,
+        "message" => $message
+    ]);
+}
+
+function success_response(string $message): void {
     api_response([
         "success" => false,
         "message" => $message

@@ -1,11 +1,18 @@
 <?php
 
-function json_api_response(array $data): void {
+function api_response(array $data): void {
     $json = json_encode($data);
     ob_end_clean();
     header("Content-Type: application/json");
     echo $json;
     exit;
+}
+
+function api_error_response(string $message): void {
+    api_response([
+        "success" => false,
+        "message" => $message
+    ]);
 }
 
 function http_get_param(string $key): ?string {

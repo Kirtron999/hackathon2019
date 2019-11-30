@@ -8,7 +8,7 @@ if (!isset($_SESSION['id'])) {
 
 $title = http_post_param("title") ?? "";
 $description = http_post_param("description") ?? "";
-$category = http_post_param("category") ?? "";
+$category_id = http_post_param("category_id") ?? "";
 $price = http_post_param("price") ?? "";
 $is_task = 1;
 
@@ -20,8 +20,8 @@ if ($price < 0) {
     error_response("Price cannot be negative");
 }
 
-$stmt = $db->prepare("INSERT INTO tasks (user_id, title, description, category, price, is_task) VALUES (?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("issidi", $_SESSION['id'], $title, $description, $category, $price, $is_task);
+$stmt = $db->prepare("INSERT INTO tasks (user_id, category_id, title, description, price, is_task) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("iissdi", $_SESSION['id'], $category_id, $title, $description, $price, $is_task);
 $stmt->execute();
 
 ?>

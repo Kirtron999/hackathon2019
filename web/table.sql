@@ -93,16 +93,16 @@ Start transaction;
 commit;
 
 Start transaction;
-	INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (0, 7, "custom_title_1", "custom_desc_1", 1000, 1);
-    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (0, 14, "custom_title_2", "custom_desc_2", 2000, 1);
-    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (0, 36, "custom_title_3", "custom_desc_3", 2000, 1);
-    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (0, 36, "custom_title_4", "custom_desc_4", 2000, 1);
-    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (0, 36, "custom_title_5", "custom_desc_5", 3000, 1);
-    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (0, 27, "custom_title_6", "custom_desc_6", 3000, 1);
-    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (0, 37, "custom_title_7", "custom_desc_7", 4500, 1);
-    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (0, 18, "custom_title_8", "custom_desc_8", 7500, 1);
-    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (0, 18, "custom_title_9", "custom_desc_9", 7500, 1);
-    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (0, 39, "custom_title_10", "custom_desc_10", 9000, 1);
+	INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (1, 7, "custom_title_1", "custom_desc_1", 1000, 1);
+    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (3, 14, "custom_title_2", "custom_desc_2", 2000, 1);
+    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (2, 36, "custom_title_3", "custom_desc_3", 2000, 1);
+    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (1, 36, "custom_title_4", "custom_desc_4", 2000, 1);
+    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (1, 36, "custom_title_5", "custom_desc_5", 3000, 1);
+    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (3, 27, "custom_title_6", "custom_desc_6", 3000, 1);
+    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (3, 37, "custom_title_7", "custom_desc_7", 4500, 1);
+    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (2, 18, "custom_title_8", "custom_desc_8", 7500, 1);
+    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (2, 18, "custom_title_9", "custom_desc_9", 7500, 1);
+    INSERT INTO `posts` (`user_id`, `category_id`, `title`, `description`, `price`, `is_task`) VALUES (3, 39, "custom_title_10", "custom_desc_10", 9000, 1);
 commit; 
 
 SET character_set_client = @saved_cs_client;

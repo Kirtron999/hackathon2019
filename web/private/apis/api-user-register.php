@@ -1,7 +1,6 @@
 <?php
 
 require_once "../private/libs/api-util.php";
-require_once "../private/configs/mysql.config.php";
 
 $username = http_post_param("username") ?? "";
 $email    = http_post_param("email") ?? "";
@@ -17,11 +16,6 @@ if (strlen($email) == 0) {
 
 if (strlen($password) == 0) {
     error_response("Password is required");
-}
-
-$db = new mysqli(db_host, db_username, db_password, db_name, db_port);
-if ($db->connect_error) {
-    error_response("Server error");
 }
 
 $stmt = $db->prepare("SELECT * FROM users WHERE username = ? LIMIT 1");

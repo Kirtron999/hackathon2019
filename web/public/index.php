@@ -1,6 +1,10 @@
 <?php
 declare(strict_types=1);
 
+# Establish database connection
+require_once "../private/libs/database-connect.php";
+$db = database_connect();
+
 # Show all errors, log errors to ./php-errors.log
 error_reporting(E_ALL);
 ini_set("log_errors", "1");

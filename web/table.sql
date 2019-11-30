@@ -1,5 +1,5 @@
-CREATE DATABASE `hackathon`;
-USE DATABASE `hackathon`;
+CREATE DATABASE IF NOT EXISTS `hackathon`;
+USE `hackathon`;
 
 # users
 DROP TABLE IF EXISTS `users`;

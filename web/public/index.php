@@ -47,6 +47,10 @@ else if ($request_uri === "/login") {
     $smarty->display("login.tmpl.html");
 }
 
+else if ($request_uri === "/register") {
+    $smarty->display("register.tmpl.html");
+}
+
 else if ($request_uri === "/logout") {
     require_once "../private/pages/page-logout.php";
 }

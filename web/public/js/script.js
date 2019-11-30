@@ -20,3 +20,17 @@ function httpPost (url, parameters, callback) {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(query);
 }
+
+function parseResponse(statusCode, responseText) {
+    if (statusCode != 200) {
+        return null;
+    }
+
+    var json = null;
+    try {
+        json = JSON.parse(responseText);
+    }
+    catch (ignored) {}
+
+    return json;
+}

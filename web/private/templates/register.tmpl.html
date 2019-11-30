@@ -1,5 +1,5 @@
 {extends file="base.tmpl.html"}
-{block name="title"}Hackathon 2019: Login{/block}
+{block name="title"}Hackathon 2019: Register{/block}
 {block name="resources"}
 <style>
     main {
@@ -82,7 +82,7 @@
         width: 100%;
     }
 
-    #login-error {
+    #register-error {
         color: rgb(235, 87, 87);
         text-align: center;
         font-size: 14px;
@@ -91,25 +91,31 @@
         padding: 8px;
     }
 
-    #login-error[data-is-visible=true] {
+    #register-error[data-is-visible=true] {
         display: block;
     }
 </style>
 
 <script>
     window.onload = function() {
-        var loginButton = document.getElementById("login-button");
-        loginButton.addEventListener("click", tryLogin);
+        var registerButton = document.getElementById("register-button");
+        registerButton.addEventListener("click", tryRegister);
     };
 
-    function tryLogin() {
+    function tryRegister() {
         hideError();
 
         var username = document.getElementById("input-username");
+        var email = document.getElementById("input-email");
         var password = document.getElementById("input-password");
 
         if (!username.value) {
             showError("Please enter a valid username.");
+            return;
+        }
+
+        if (!email.value) {
+            showError("Please enter your email.");
             return;
         }
 
@@ -120,10 +126,11 @@
 
         var opts = {
             username: username.value,
+            email: email.value,
             password: password.value
         };
 
-        httpPost("/api/user/login", opts, function(statusCode, responseText) {
+        httpPost("/api/user/register", opts, function(statusCode, responseText) {
             var json = parseResponse(statusCode, responseText);
             if (!json) {
                 showError("Server error, please try again later.");
@@ -140,25 +147,31 @@
     }
 
     function showError(message) {
-        var error = document.getElementById("login-error");
+        var error = document.getElementById("register-error");
         error.dataset.isVisible = true;
         error.textContent = message;
     }
 
     function hideError() {
-        var error = document.getElementById("login-error");
+        var error = document.getElementById("register-error");
         error.dataset.isVisible = false;
     }
 </script>
 {/block}
 {block name="content"}
 <main>
-    <h1 class="title">Login</h1>
+    <h1 class="title">Register</h1>
     <div class="text">
         <div class="input-field">
             <label for="input-username">Username</label>
             <div class="input-text">
                 <input id="input-username" type="text" placeholder="Enter your username">
+            </div>
+        </div>
+        <div class="input-field">
+            <label for="input-email">E-Mail</label>
+            <div class="input-text">
+                <input id="input-email" type="text" placeholder="Enter your email">
             </div>
         </div>
         <div class="input-field">
@@ -168,13 +181,11 @@
             </div>
         </div>
         <div class="input-field">
-            <button id="login-button" class="primary">Log In</button>
-            <span id="login-error"></span>
+            <button id="register-button" class="primary">Register</button>
+            <span id="register-error"></span>
         </div>
         <div class="small">
-            Don't have an account yet? <a href="/register">Register now</a>
-            <br>
-            Forgot password? <a href>Send recovery e-mail</a>
+            Already have an account? <a href="/login">Login instead</a>
         </div>
     </div>
 </main>

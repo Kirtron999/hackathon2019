@@ -24,7 +24,7 @@ if ($result->num_rows == 1) {
     $hash = $user["hash_bcrypt"];
 
     if (password_verify($password, $hash)) {
-        $_SESSION["id"] = $user["id"];
+        session_update($user);
         success_response("Successfully logged in!");
     }
 }

@@ -38,5 +38,10 @@ function http_post_param(string $key): ?string {
     return null;
 }
 
+function session_update(array $user): void{
+	global $_SESSION;
+	
+	$_SESSION["id"] = $user["id"];
+}
 
 ?>

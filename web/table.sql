@@ -7,7 +7,7 @@ SET character_set_client = utf8;
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
     `id` int(11) NOT NULL auto_increment,
-    `username` varchar(255) NOT NULL collate utf8_bin,
+    `username` varchar(32) NOT NULL collate utf8_bin,
     `email` varchar(255) NOT NULL collate utf8_bin,
     `hash_bcrypt` varchar(64) NOT NULL collate utf8_bin,
     PRIMARY KEY (`id`)
@@ -41,7 +41,7 @@ CREATE TABLE `replies` (
 
 #categories
 DROP TABLE IF EXISTS `categories`;
-CREATE TABLE `replies` (
+CREATE TABLE `categories` (
 	`id` int(11) NOT NULL UNIQUE KEY,
 	`name` varchar(50) NOT NULL collate utf8_bin,
 	`parent_id` int(11)

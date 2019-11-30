@@ -3,7 +3,7 @@
 function get_replies(integer $task_id) {
     global $db;
 
-	$stmt = $db->query("SELECT name FROM replies WHERE post_id = ?");
+	$stmt = $db->query("SELECT message FROM replies WHERE post_id = ?");
 	$stmt->bind_param("s", $task_id);
 	$stmt->execute();
 	

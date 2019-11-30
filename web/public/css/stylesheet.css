@@ -140,6 +140,8 @@ button.secondary:hover {
 
 .side.left {
     width: 25%;
+    overflow-y: auto;
+    padding-right: 16px;
 }
 
 .category {
@@ -170,4 +172,6 @@ button.secondary:hover {
 
 .side.right {
     width: 75%;
+    padding-left: 16px;
+    padding-right: 16px;
 }

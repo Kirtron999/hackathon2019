@@ -34,7 +34,7 @@ if ($users->num_rows == 1) {
 else {
     $password = password_hash($password, PASSWORD_BCRYPT);
 
-    $stmt = $db->prepare("INSERT INTO users (login, password, email) VALUES (?, ?, ?)");
+    $stmt = $db->prepare("INSERT INTO users (username, hash_bcrypt, email) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $username, $password, $email);
     $stmt->execute();
 

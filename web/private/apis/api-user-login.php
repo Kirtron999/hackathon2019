@@ -27,7 +27,7 @@ $result = $stmt->get_result();
 
 if ($result->num_rows == 1) {
     $user = $result->fetch_assoc();
-    $hash = $user["password"];
+    $hash = $user["hash_bcrypt"];
 
     if (password_verify($password, $hash)) {
         $_SESSION["id"] = $user["id"];

@@ -22,6 +22,7 @@ $stmt = $db->prepare("SELECT * FROM users WHERE username = ? LIMIT 1");
 $stmt->bind_param("s", $username);
 $stmt->execute();
 
+$users = $stmt->get_result();
 if ($users->num_rows == 1) {
     error_response("User already exists");
 }

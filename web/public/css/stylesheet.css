@@ -38,37 +38,40 @@ body {
     fill: #333333;
 }
 
-.header button {
+button {
     border: 0;
-    transition: background 0.2s ease;
     outline: none;
     cursor: pointer;
     user-select: none;
     display: inline-block;
     white-space: nowrap;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-    height: 36px;
-    border-radius: 3px;
-    color: #03A9F4;
-    font-size: 14px;
     padding-left: 12px;
     padding-right: 12px;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    height: 36px;
+}
+
+button.primary {
+    transition: background 0.2s ease;
+    border-radius: 3px;
+    color: #03A9F4;
     background: rgba(3, 169, 244, 0.06);
     font-weight: 500;
     box-shadow: rgba(15, 15, 15, 0.1) 0px 1px 2px, rgba(3, 169, 244, 0.3) 0px 0px 0px 1px;
 }
 
-.header button:hover {
+button.primary:hover {
     background: rgba(3, 169, 244, 0.14);
 }
 
-.header button.empty {
+button.secondary {
     background: transparent;
     box-shadow: none;
     color: #333;
 }
 
-.header button.empty:hover {
+button.secondary:hover {
     text-decoration: underline;
 }
 

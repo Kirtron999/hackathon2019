@@ -31,13 +31,16 @@ $request_uri = parse_url($request_uri, PHP_URL_PATH);
 $logged_in = isset($_SESSION["id"]);
 $smarty->assign("logged_in", $logged_in);
 
+require_once "../private/libs/get-categories.php";
+$categories = get_categories();
+$smarty->assign("categories", $categories);
+
 if ($logged_in) {
     $smarty->assign("username", $_SESSION["username"]);
 }
 
 # Front page requested
 if ($request_uri === "/") {
-    $smarty->assign("test_page", "Front page!");
     $smarty->display("index.tmpl.html");
 }
 

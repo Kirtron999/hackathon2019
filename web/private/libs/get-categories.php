@@ -1,8 +1,7 @@
 <?php
 
-require_once "../private/libs/api-util.php";
-
 function get_categories() {
+    global $db;
 
     $result = $db->query("SELECT categories.id,
                    categories.name,
@@ -12,8 +11,7 @@ function get_categories() {
                    LEFT JOIN posts AS p ON p.category_id = categories.id
                    GROUP BY categories.id;");
 
-    $categories = $result->fetch_assoc();
-
+    $categories = $result->fetch_all(MYSQLI_ASSOC);
     return $categories;
 }
 

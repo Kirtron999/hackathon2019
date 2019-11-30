@@ -12,6 +12,7 @@ function database_connect(): mysqli {
         die("Can't connect to database: " . $db->connect_error);
     }
 
+    $db->query("SET NAMES utf8");
     return $db;
 }
 

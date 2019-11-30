@@ -50,8 +50,9 @@ else if ($request_uri === "/logout") {
 
 # Page not found
 else {
-    $smarty->assign("test_page", $request_uri . " (404)");
-    $smarty->display("index.tmpl.html");
+    $smarty->assign("title", "Page not found");
+    $smarty->assign("description", "The page you have requested does not exist or have been removed.");
+    $smarty->display("error.tmpl.html");
 }
 
 ?>

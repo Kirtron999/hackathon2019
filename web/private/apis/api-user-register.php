@@ -24,15 +24,15 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     error_response("Wrong e-mail format");
 }
 
-if (strlen($username) > 32) {
-    error_response("Username must be no longer than 32 characters");
+if (strlen($username) > 32 || strlen($username) < 6) {
+    error_response("Username must contain 6-32 characters");
 }
 
 if (preg_match("/[^a-z0-9]/i", $username)) {
     error_response("Username can only contain latin letters and numbers");
 }
 
-if (strlen($password) > 32 && strlen($password) < 6) {
+if (strlen($password) > 32 || strlen($password) < 6) {
     error_response("Password must contain 6-32 characters");
 }
 

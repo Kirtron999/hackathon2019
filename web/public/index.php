@@ -22,7 +22,7 @@ session_start();
 # Get request URL
 $request_uri = strtolower($_SERVER["REQUEST_URI"]);
 $request_uri = preg_replace("{/+}", "/", $request_uri);
-$request_path = parse_url($request_uri, PHP_URL_PATH);
+$request_uri = parse_url($request_uri, PHP_URL_PATH);
 
 # Front page requested
 if ($request_uri === "/") {
@@ -46,7 +46,7 @@ else if ($request_uri === "/logout") {
 
 # Page not found
 else {
-    $smarty->assign("test_page", $request_path . " (404)");
+    $smarty->assign("test_page", $request_uri . " (404)");
     $smarty->display("index.tmpl.html");
 }
 

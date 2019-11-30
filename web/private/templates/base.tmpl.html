@@ -25,7 +25,11 @@
                     <span class="title">Hack-a-ton</span>
                 </a>
                 {block name="header-panel"}
-                    {include file="blocks/header-unauthorized.tmpl.html"}
+                    {if $logged_in}
+                        {include file="blocks/header-authorized.tmpl.html"}
+                    {else}
+                        {include file="blocks/header-unauthorized.tmpl.html"}
+                    {/if}
                 {/block}
             </div>
             <div class="content center">

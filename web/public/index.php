@@ -28,6 +28,13 @@ $request_uri = strtolower($_SERVER["REQUEST_URI"]);
 $request_uri = preg_replace("{/+}", "/", $request_uri);
 $request_uri = parse_url($request_uri, PHP_URL_PATH);
 
+$logged_in = isset($_SESSION["id"]);
+$smarty->assign("logged_in", $logged_in);
+
+if ($logged_in) {
+    $smarty->assign("username", $_SESSION["username"]);
+}
+
 # Front page requested
 if ($request_uri === "/") {
     $smarty->assign("test_page", "Front page!");
@@ -44,10 +51,24 @@ else if ($request_uri === "/api/user/register") {
 }
 
 else if ($request_uri === "/login") {
+
+    # Redirect user to front page if he's logged in
+    if ($logged_in) {
+        header("Location: /", true, 302);
+        exit;
+    }
+
     $smarty->display("login.tmpl.html");
 }
 
 else if ($request_uri === "/register") {
+
+    # Redirect user to front page if he's logged in
+    if ($logged_in) {
+        header("Location: /", true, 302);
+        exit;
+    }
+
     $smarty->display("register.tmpl.html");
 }
 

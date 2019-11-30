@@ -24,12 +24,12 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     error_response("Wrong e-mail format");
 }
 
-if (strlen($username) < 6 || strlen($username) > 32) {
-    error_response("Username must be between 6 and 32 characters");
+if (strlen($username) < 3 || strlen($username) > 32) {
+    error_response("Username must be between 3 and 32 characters");
 }
 
-if (strlen($password) < 6 || strlen($password) > 32) {
-    error_response("Password must be between 6 and 32 characters");
+if (strlen($password) < 3 || strlen($password) > 32) {
+    error_response("Password must be between 3 and 32 characters");
 }
 
 if (preg_match("/[^a-z0-9]/i", $username)) {
@@ -58,7 +58,7 @@ else {
     $users = $stmt->get_result();
     $user = $users->fetch_assoc();
 
-    $_SESSION["id"] = $user["id"];
+    session_update($user);
     success_response("Registered successfully!");
 }
 

@@ -1,12 +1,12 @@
 <?php
+declare(strict_types=1);
 
 # Show all errors, log errors to ./php-errors.log
 error_reporting(E_ALL);
-ini_set("log_errors", 1);
-ini_set("error_log", __DIR__ . "./php-errors.log");
-ini_set("log_errors_max_len", 0);
-ini_set("display_startup_errors", 1);
-ini_set("display_errors", 1);
+ini_set("log_errors", "1");
+ini_set("log_errors_max_len", "0");
+ini_set("display_startup_errors", "1");
+ini_set("display_errors", "1");
 
 # Require Smarty template engine
 require_once "../private/deps/smarty-3.1.13/Smarty.class.php";
@@ -15,8 +15,8 @@ $smarty->setTemplateDir("../private/templates");
 $smarty->setCompileDir("../private/templates_c");
 
 # Setup session storage
-ini_set("session.cookie_lifetime", 60 * 60 * 24 * 30);
-ini_set("session.gc_maxlifetime", 60 * 60 * 24 * 30);
+ini_set("session.cookie_lifetime", strval(60 * 60 * 24 * 30));
+ini_set("session.gc_maxlifetime", strval(60 * 60 * 24 * 30));
 session_start();
 
 # Get request URL

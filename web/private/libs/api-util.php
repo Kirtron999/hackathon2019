@@ -17,7 +17,7 @@ function error_response(string $message): void {
 
 function success_response(string $message): void {
     api_response([
-        "success" => false,
+        "success" => true,
         "message" => $message
     ]);
 }

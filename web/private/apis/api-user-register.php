@@ -4,7 +4,7 @@ require_once "../private/libs/api-util.php";
 require_once "../private/configs/mysql.config.php";
 
 $username = http_post_param("username") ?? "";
-$email = http_post_param("email") ?? "";
+$email    = http_post_param("email") ?? "";
 $password = http_post_param("password")  ?? "";
 
 if (strlen($username) == 0) {
@@ -29,24 +29,24 @@ $stmt->bind_param("s", $username);
 $stmt->execute();
 
 if ($users->num_rows == 1) {
-    error_response("User already exist");
+    error_response("User already exists");
 }
 else {
     $password = password_hash($password, PASSWORD_BCRYPT);
 
-    $stmt = $db->prepare('INSERT INTO users (login, password, email) VALUES (?, ?, ?);');
-    $stmt->bind_param('sss', $username, $password, $email);
+    $stmt = $db->prepare("INSERT INTO users (login, password, email) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $username, $password, $email);
     $stmt->execute();
 
     $stmt = $db->prepare("SELECT * FROM users WHERE username = ? LIMIT 1");
-    $stmt->bind_param('s', $username);
+    $stmt->bind_param("s", $username);
     $stmt->execute();
 
     $users = $stmt->get_result();
     $user = $users->fetch_assoc();
 
-    session_start();
-    $_SESSION['id'] = $user['id'];
+    $_SESSION["id"] = $user["id"];
+    success_response("Registered successfully!");
 }
 
 ?>

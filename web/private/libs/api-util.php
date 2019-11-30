@@ -45,19 +45,11 @@ function session_update(array $user): void {
     $_SESSION["username"] = $user["username"];
 }
 
-function categories_list(): void{
-	$stmt = $db->prepare("SELECT name FROM categories WHERE parent_id = NULL");
+function get_replies(integer $task_id): ?string{
+	$stmt = $db->query("SELECT name FROM replies WHERE post_id = ?");
+	$stmt->bind_param("s", $task_id);
 	$stmt->execute();
-
-	$result = $stmt->get_result();
+	
+	$result = $stmt->get_result();	
 }
-
-function categories_sub(integer $id): void{
-	$stmt = $db->prepare("SELECT name FROM categories WHERE parent_id = ?");
-	$stmt->bind_param("s", $id);
-	$stmt->execute();
-
-	$result = $stmt->get_result();
-}
-
 ?>

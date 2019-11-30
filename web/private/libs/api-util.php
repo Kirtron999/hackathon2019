@@ -44,4 +44,19 @@ function session_update(array $user): void{
 	$_SESSION["id"] = $user["id"];
 }
 
+function categories_list(): void{
+	$stmt = $db->prepare("SELECT name FROM categories WHERE parent_id = NULL");
+	$stmt->execute();
+
+	$result = $stmt->get_result();
+}
+
+function categories_sub(integer $id): void{
+	$stmt = $db->prepare("SELECT name FROM categories WHERE parent_id = ?");
+	$stmt->bind_param("s", $id);
+	$stmt->execute();
+
+	$result = $stmt->get_result();
+}
+
 ?>

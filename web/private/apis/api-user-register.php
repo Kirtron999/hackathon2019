@@ -28,7 +28,7 @@ if (strlen($username) > 32) {
     error_response("Username must be no longer than 32 characters");
 }
 
-if (!preg_match("/^[a-zA-Z0-9]+$/", $username)) {
+if (preg_match("/[^a-z0-9]/i", $username)) {
     error_response("Username can only contain latin letters and numbers");
 }
 

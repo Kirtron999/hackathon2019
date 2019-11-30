@@ -1,5 +1,14 @@
 {foreach from=$categories item=category}
     <div class="category">
-        <a href="/category/{$category.id}">{$category.name}</a><span>{$category.posts_count}</span>   
+        <details>
+        <summary><a href="/category/{$category.id}">{$category.name}</a><span>{$category.count}</span></summary>
+        {if $category.children}
+            {foreach from=$category.children item=child}
+                <div class="category nested">
+                    <a href="/category/{$child.id}">{$child.name}</a><span>{$child.count}</span>
+                </div>
+            {/foreach}
+        {/if} 
+        </details>
     </div>
 {/foreach}

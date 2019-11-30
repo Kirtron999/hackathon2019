@@ -139,7 +139,7 @@ button.secondary:hover {
 }
 
 .side.left {
-    width: 25%;
+    width: 30%;
     overflow-y: auto;
     padding-right: 16px;
 }
@@ -154,6 +154,18 @@ button.secondary:hover {
     display: inline-block;
     text-decoration: none;
     color: #0091d9;
+}
+
+details, summary {
+    outline: none;
+}
+
+summary {
+    padding-bottom: 2px;
+}
+
+.category.nested {
+    padding-left: 24px;
 }
 
 .category a:hover {
@@ -171,7 +183,7 @@ button.secondary:hover {
 }
 
 .side.right {
-    width: 75%;
+    width: 70%;
     padding-left: 16px;
     padding-right: 16px;
 }

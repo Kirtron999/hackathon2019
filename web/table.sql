@@ -41,7 +41,7 @@ CREATE TABLE `replies` (
 
 #categories
 DROP TABLE IF EXISTS `categories`;
-CREATE TABLE `replies` (
+CREATE TABLE `categories` (
 	`id` int(11) NOT NULL UNIQUE KEY,
 	`name` varchar(50) NOT NULL collate utf8_bin,
 	`parent_id` int(11)

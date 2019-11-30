@@ -1,109 +1,78 @@
-{include file="svg-sprites.tmpl.html"}
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-        <title>Hackathon 2019</title>
-
-        <script src="/js/script.js"></script>
-
-        <link rel="stylesheet" href="/css/reset.css">
-        <link rel="stylesheet" href="/css/stylesheet.css">
-    </head>
-
-    <body>
-        {call name=svg_sprites}
-
-        <div class="page">
-            <div class="header center">
-                <a href="/">
-                    <svg class="logo"><use xlink:href="#svg-logo"></use></svg>
-                    <span class="title">Hack-a-ton</span>
-                </a>
-                <div class="buttons">
-                    <button class="empty">Sign Up</button>
-                    <button>Create an offer...</button>
-                </div>
-            </div>
-            <div class="content center">
-                <div class="side left">
-                    <div class="category">
-                        <a href>IT, интернет, телеком</a><span>1</span>
-                    </div>
-                    <div class="category">
-                        <a href>Бытовые услуги</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Деловые услуги</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Искусство</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Красота, здоровье</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Курьерские поручения</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Мастер на час</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Няни, сиделки</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Оборудование, производство</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Обучение, курсы</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Охрана, безопасность</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Питание, кейтеринг</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Праздники, мероприятия</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Реклама, полиграфия</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Ремонт и обслуживание техники</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Ремонт, строительство</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Сад, благоустройство</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Транспорт, перевозки</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Уборка</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Установка техники</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Уход за животными</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Фото- и видеосъёмка</a><span></span>
-                    </div>
-                    <div class="category">
-                        <a href>Другое</a><span></span>
-                    </div>
-                </div>
-                <div class="side right box">
-                    Current page: {$test_page}
-                </div>
-            </div>
-        </div>
-    </body>
-    <script> </script>
-</html>
+{extends file="base.tmpl.html"}
+{block name="title"}Hackathon 2019: Front Page{/block}
+{block name="content"}
+<div class="side left">
+    <div class="category">
+        <a href>IT, интернет, телеком</a><span>1</span>
+    </div>
+    <div class="category">
+        <a href>Бытовые услуги</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Деловые услуги</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Искусство</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Красота, здоровье</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Курьерские поручения</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Мастер на час</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Няни, сиделки</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Оборудование, производство</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Обучение, курсы</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Охрана, безопасность</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Питание, кейтеринг</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Праздники, мероприятия</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Реклама, полиграфия</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Ремонт и обслуживание техники</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Ремонт, строительство</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Сад, благоустройство</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Транспорт, перевозки</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Уборка</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Установка техники</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Уход за животными</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Фото- и видеосъёмка</a><span></span>
+    </div>
+    <div class="category">
+        <a href>Другое</a><span></span>
+    </div>
+</div>
+<div class="side right box">
+    Current page: {$test_page}
+</div>
+{/block}

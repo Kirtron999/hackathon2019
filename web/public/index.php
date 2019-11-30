@@ -43,6 +43,10 @@ else if ($request_uri === "/api/user/register") {
     require_once "../private/apis/api-user-register.php";
 }
 
+else if ($request_uri === "/login") {
+    $smarty->display("login.tmpl.html");
+}
+
 else if ($request_uri === "/logout") {
     require_once "../private/pages/page-logout.php";
 }

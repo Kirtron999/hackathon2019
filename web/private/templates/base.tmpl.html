@@ -1,0 +1,40 @@
+{include file="svg-sprites.tmpl.html"}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <title>{block name="title"}Hackathon 2019{/block}</title>
+
+        <script src="/js/script.js"></script>
+
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/stylesheet.css">
+
+        {block name="resources"}{/block}
+    </head>
+
+    <body>
+        {call name=svg_sprites}
+
+        <div class="page">
+            <div class="header center">
+                <a href="/">
+                    <svg class="logo"><use xlink:href="#svg-logo"></use></svg>
+                    <span class="title">Hack-a-ton</span>
+                </a>
+                {block name="header-panel"}
+                    <div class="buttons">
+                        <button class="empty">Sign Up</button>
+                        <button>Create an offer...</button>
+                    </div>
+                {/block}
+            </div>
+            <div class="content center">
+                {block name="content"}{/block}
+            </div>
+        </div>
+    </body>
+    <script> </script>
+</html>
